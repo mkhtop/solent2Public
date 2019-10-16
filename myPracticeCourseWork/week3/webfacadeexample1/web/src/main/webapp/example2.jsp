@@ -61,7 +61,7 @@
                 <td>
                     <form method="get">
                         <input type="text" name="animalName">
-                        <button type="submit" value="<%=animalType%>" name="animalType" onclick="alert('New <%=animalType%> Added')">Submit</button>
+                        <button type="submit" value="<%=animalType%>" name="animalType" >Submit</button>
                     </form>
                 </td>
             </tr>
