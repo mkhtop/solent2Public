@@ -13,13 +13,7 @@
         <spring.version>5.1.9.RELEASE</spring.version>
     </properties>
     
-    <modules>
-       <module>model</module>
-       <module>dao-simple</module>
-       <module>dao-jaxb</module>
-       <module>service</module>
-       <module>web</module>
-    </modules>
+    <modules></modules>
     
     <dependencyManagement>
         <dependencies>

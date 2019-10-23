@@ -1,0 +1,879 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "COM405 Farm",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-1",
+                    "name": "addAnimal",
+                    "response": [
+                        {
+                            "id": "rester-19",
+                            "name": "2019-10-23T11:24:30.199Z addAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 430.0650000004098,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/xml"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "291"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:24:30 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><replyMessage><code>500</code><debugMessage>error calling /addAnimal animal name is duplicated but must be unique. name=randomName</debugMessage><animalList><alist/><currentMaxId>0</currentMaxId></animalList><stringlist/></replyMessage>",
+                            "status": "",
+                            "code": 500
+                        },
+                        {
+                            "id": "rester-18",
+                            "name": "2019-10-23T11:23:04.913Z addAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 19.46000000089407,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "POST,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:23:04 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-17",
+                            "name": "2019-10-23T11:22:54.422Z addAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 60.1800000006333,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/xml"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "291"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:22:54 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><replyMessage><code>500</code><debugMessage>error calling /addAnimal animal name is duplicated but must be unique. name=randomName</debugMessage><animalList><alist/><currentMaxId>0</currentMaxId></animalList><stringlist/></replyMessage>",
+                            "status": "",
+                            "code": 500
+                        },
+                        {
+                            "id": "rester-5",
+                            "name": "2019-10-23T09:45:58.115Z addAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 39.7999999995518,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/xml"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "263"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 09:45:58 GMT"
+                                }
+                            ],
+                            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><replyMessage><code>200</code><animalList><alist><animal><name>randomName</name><animalType><sound>meow</sound><type>Cat</type></animalType><id>1</id></animal></alist></animalList><stringlist/></replyMessage>",
+                            "status": "",
+                            "code": 200
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-2",
+                    "name": "farmService",
+                    "response": [
+                        {
+                            "id": "rester-4",
+                            "name": "2019-10-23T09:45:49.977Z farmService",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "text/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 12.665000000182772,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "GET,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 09:45:49 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-3",
+                            "name": "2019-10-23T09:45:44.191Z farmService",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 11.390000000566943,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "GET,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 09:45:44 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-2",
+                            "name": "2019-10-23T09:44:42.810Z farmService",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "text/plain"
+                                    }
+                                ]
+                            },
+                            "responseTime": 12.764999999490101,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "12"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 09:44:42 GMT"
+                                }
+                            ],
+                            "body": "Hello, rest!",
+                            "status": "",
+                            "code": 200
+                        },
+                        {
+                            "id": "rester-1",
+                            "name": "2019-10-23T09:44:31.626Z farmService",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "text/plain"
+                                    }
+                                ]
+                            },
+                            "responseTime": 25.16500000000815,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "GET,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 09:44:31 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getAllAnimals",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-3",
+                    "name": "getAllAnimals"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getAnimalsOfType?animalType=Cat",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-4",
+                    "name": "getAnimalsOfType",
+                    "response": [
+                        {
+                            "id": "rester-6",
+                            "name": "2019-10-23T09:53:27.156Z getAnimalsOfType",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/getAnimalsOfType?animalType=Cat",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 24.890000000596046,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/xml"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "255"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 09:53:27 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><replyMessage><code>500</code><debugMessage>error calling /getAnimalsOfType Not supported yet.</debugMessage><animalList><alist/><currentMaxId>0</currentMaxId></animalList><stringlist/></replyMessage>",
+                            "status": "",
+                            "code": 500
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getSupportedAnimalTypes",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-5",
+                    "name": "getSupportedAnimalTypes_json"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/addAnimal",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-6",
+                    "name": "getSupportedAnimalTypes_xml"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-7",
+                    "name": "removeAnimal",
+                    "response": [
+                        {
+                            "id": "rester-20",
+                            "name": "2019-10-23T11:24:48.998Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 14.374999999068677,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/xml"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "219"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:24:49 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><replyMessage><code>200</code><debugMessage>animal removed</debugMessage><animalList><alist/><currentMaxId>0</currentMaxId></animalList><stringlist/></replyMessage>",
+                            "status": "",
+                            "code": 500
+                        },
+                        {
+                            "id": "rester-16",
+                            "name": "2019-10-23T11:22:45.055Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "text/plain"
+                                    }
+                                ]
+                            },
+                            "responseTime": 11.865000000223517,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1211"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:22:45 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 406 – Not Acceptable</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 406 – Not Acceptable</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Not Acceptable</p><p><b>Description</b> The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 406
+                        },
+                        {
+                            "id": "rester-15",
+                            "name": "2019-10-23T11:22:28.142Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 5.345000001601875,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "4269"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:22:28 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 500 – Internal Server Error</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 500 – Internal Server Error</h1><hr class=\"line\" /><p><b>Type</b> Exception Report</p><p><b>Message</b> java.lang.RuntimeException: Uncompilable source code - missing return statement</p><p><b>Description</b> The server encountered an unexpected condition that prevented it from fulfilling the request.</p><p><b>Exception</b></p><pre>javax.servlet.ServletException: java.lang.RuntimeException: Uncompilable source code - missing return statement\n\torg.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:393)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:381)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:344)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221)\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\n</pre><p><b>Root Cause</b></p><pre>java.lang.RuntimeException: Uncompilable source code - missing return statement\n\torg.solent.com504.factoryandfacade.impl.rest.RestService.removeAnimal(RestService.java:217)\n\tsun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tsun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tsun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tjava.lang.reflect.Method.invoke(Method.java:498)\n\torg.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:151)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:171)\n\torg.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:152)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:104)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:384)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:342)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:101)\n\torg.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:271)\n\torg.glassfish.jersey.internal.Errors$1.call(Errors.java:271)\n\torg.glassfish.jersey.internal.Errors$1.call(Errors.java:267)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:315)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:297)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:267)\n\torg.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:297)\n\torg.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:254)\n\torg.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1030)\n\torg.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:373)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:381)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:344)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221)\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\n</pre><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 500
+                        },
+                        {
+                            "id": "rester-14",
+                            "name": "2019-10-23T11:22:21.140Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 10.809999999590218,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "POST,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:22:21 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-13",
+                            "name": "2019-10-23T11:22:19.707Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 3.7599999997764826,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "POST,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:22:19 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-12",
+                            "name": "2019-10-23T11:22:08.176Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 6.125,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "4269"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:22:08 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 500 – Internal Server Error</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 500 – Internal Server Error</h1><hr class=\"line\" /><p><b>Type</b> Exception Report</p><p><b>Message</b> java.lang.RuntimeException: Uncompilable source code - missing return statement</p><p><b>Description</b> The server encountered an unexpected condition that prevented it from fulfilling the request.</p><p><b>Exception</b></p><pre>javax.servlet.ServletException: java.lang.RuntimeException: Uncompilable source code - missing return statement\n\torg.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:393)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:381)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:344)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221)\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\n</pre><p><b>Root Cause</b></p><pre>java.lang.RuntimeException: Uncompilable source code - missing return statement\n\torg.solent.com504.factoryandfacade.impl.rest.RestService.removeAnimal(RestService.java:217)\n\tsun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tsun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tsun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tjava.lang.reflect.Method.invoke(Method.java:498)\n\torg.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:151)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:171)\n\torg.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:152)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:104)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:384)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:342)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:101)\n\torg.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:271)\n\torg.glassfish.jersey.internal.Errors$1.call(Errors.java:271)\n\torg.glassfish.jersey.internal.Errors$1.call(Errors.java:267)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:315)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:297)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:267)\n\torg.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:297)\n\torg.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:254)\n\torg.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1030)\n\torg.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:373)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:381)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:344)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221)\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\n</pre><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 500
+                        },
+                        {
+                            "id": "rester-11",
+                            "name": "2019-10-23T11:21:52.886Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 4.479999999515712,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "POST,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:21:52 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-10",
+                            "name": "2019-10-23T11:21:48.697Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 10.899999999441206,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "POST,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:21:48 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-9",
+                            "name": "2019-10-23T11:21:43.095Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "text/plain"
+                                    }
+                                ]
+                            },
+                            "responseTime": 15.035000000149012,
+                            "header": [
+                                {
+                                    "key": "Allow",
+                                    "value": "POST,OPTIONS"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1090"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:21:43 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 405 – Method Not Allowed</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 405 – Method Not Allowed</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Method Not Allowed</p><p><b>Description</b> The method received in the request-line is known by the origin server but not supported by the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 405
+                        },
+                        {
+                            "id": "rester-8",
+                            "name": "2019-10-23T11:21:40.347Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "text/plain"
+                                    }
+                                ]
+                            },
+                            "responseTime": 24.9449999993667,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "1211"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:21:40 GMT"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 406 – Not Acceptable</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 406 – Not Acceptable</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Not Acceptable</p><p><b>Description</b> The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 406
+                        },
+                        {
+                            "id": "rester-7",
+                            "name": "2019-10-23T11:21:29.387Z removeAnimal",
+                            "originalRequest": {
+                                "url": "http://localhost:8080/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/xml"
+                                    }
+                                ]
+                            },
+                            "responseTime": 401.03500000108033,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/html;charset=utf-8"
+                                },
+                                {
+                                    "key": "Content-Language",
+                                    "value": "en"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "4269"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Wed, 23 Oct 2019 11:21:29 GMT"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                }
+                            ],
+                            "body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 500 – Internal Server Error</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 500 – Internal Server Error</h1><hr class=\"line\" /><p><b>Type</b> Exception Report</p><p><b>Message</b> java.lang.RuntimeException: Uncompilable source code - missing return statement</p><p><b>Description</b> The server encountered an unexpected condition that prevented it from fulfilling the request.</p><p><b>Exception</b></p><pre>javax.servlet.ServletException: java.lang.RuntimeException: Uncompilable source code - missing return statement\n\torg.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:393)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:381)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:344)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221)\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\n</pre><p><b>Root Cause</b></p><pre>java.lang.RuntimeException: Uncompilable source code - missing return statement\n\torg.solent.com504.factoryandfacade.impl.rest.RestService.removeAnimal(RestService.java:217)\n\tsun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tsun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tsun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tjava.lang.reflect.Method.invoke(Method.java:498)\n\torg.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:151)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:171)\n\torg.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:152)\n\torg.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:104)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:384)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:342)\n\torg.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:101)\n\torg.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:271)\n\torg.glassfish.jersey.internal.Errors$1.call(Errors.java:271)\n\torg.glassfish.jersey.internal.Errors$1.call(Errors.java:267)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:315)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:297)\n\torg.glassfish.jersey.internal.Errors.process(Errors.java:267)\n\torg.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:297)\n\torg.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:254)\n\torg.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1030)\n\torg.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:373)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:381)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:344)\n\torg.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221)\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\n</pre><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.26</h3></body></html>",
+                            "status": "",
+                            "code": 500
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
