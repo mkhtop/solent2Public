@@ -63,7 +63,7 @@ public class RestService {
     @GET
     @Path("/getHeartbeat")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response getAllAnimals() {
+    public Response getHeartbeat() {
         try {
 
             ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
@@ -86,6 +86,33 @@ public class RestService {
         }
     }
 
+    @GET
+    @Path("/arrived")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response arrived(@QueryParam("username") String username, @QueryParam("location") String location) {
+        try {
+
+            ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            ReplyMessage replyMessage = new ReplyMessage();
+            LOG.debug("/arrived called");
+
+            boolean ok = serviceFacade.arrived(username, location);
+            if (ok){
+                replyMessage.setCode(Response.Status.OK.getStatusCode());
+            } else {
+                replyMessage.setDebugMessage("problem with arrived info " + username + " " + location);
+            }
+            
+            return Response.status(Response.Status.OK).entity(replyMessage).build();
+            
+        } catch (Exception ex) {
+            LOG.error("error calling /arrived ", ex);
+            ReplyMessage replyMessage = new ReplyMessage();
+            replyMessage.setCode(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
+            replyMessage.setDebugMessage("error calling /arrived " + ex.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(replyMessage).build();
+        }
+    }
  
 
 }

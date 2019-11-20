@@ -22,12 +22,19 @@
 
     // accessing request parameters
     String actionStr = request.getParameter("action");
+    String usernameStr = request.getParameter("username");
+    String locationStr = request.getParameter("location");
 
     // basic error checking before making a call
     if (actionStr == null || actionStr.isEmpty()) {
         // do nothing
 
-    } else if ("XXX".equals(actionStr)) {
+    } else if ("on".equals(actionStr)) {
+        // put your actions here
+        serviceFacade.arrived(usernameStr, locationStr);
+    } else if ("leaving".equals(actionStr)){
+        //action here
+    } else if ("reset".equals(actionStr)) {
         // put your actions here
     } else {
         errorMessage = "ERROR: page called for unknown action";
@@ -48,8 +55,14 @@
         <div style="color:green;"><%=message%></div>
 
         <p>The time is: <%= new Date().toString()%> (note page is auto refreshed every 20 seconds)</p>
-
-        <p>Getting heartbeat message: <%= serviceFacade.getHeartbeat()%> (note message is auto refreshed every 20 seconds)</p>
-
+        <h2>Controls</h2>
+        <form>
+            <p>Username:<input name="username"></p>
+            <p>Location:<input name="location"></p>
+            <button type="submit" name="action" value="on">On Site</button>
+            <button type="submit" name="action" value="leaving">Leaving Site</button>
+            <button type="submit" name="action" value="reset">Reset</button>
+        </form>
+        
     </body>
 </html>

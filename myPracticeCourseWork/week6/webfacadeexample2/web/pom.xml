@@ -30,7 +30,7 @@
 
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-dao-jaxb</artifactId>
+            <artifactId>webfacadeexample2-dao-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
         
@@ -70,6 +70,13 @@
         </dependency>
         
         <!-- logging dependencies to be included in war so scope compile-->
+        <!-- SLF4J over Log4j needed for jpa-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        
         <!-- Log4j API and Core implementation  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -102,7 +109,7 @@
                 <version>1.7.6</version>
                 <configuration>
                     <container>
-                        <containerId>tomcat9x</containerId>
+                        <containerId>tomcat8x</containerId>
                         <type>embedded</type>
                     </container>
                 </configuration>
