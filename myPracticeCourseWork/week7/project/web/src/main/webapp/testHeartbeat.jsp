@@ -50,6 +50,25 @@
         <p>The time is: <%= new Date().toString()%> (note page is auto refreshed every 20 seconds)</p>
 
         <p>Getting heartbeat message: <%= serviceFacade.getHeartbeat()%> (note message is auto refreshed every 20 seconds)</p>
-
+        
+        <h2>Admin Tools</h2>
+        <form action ="/adminTools.jsp" method="post">
+            <p> Create Worker</p>
+            <input type="hidden" name="createWorker" value="Create Worker">
+            <input type="hidden" name="action" value="createWorker">
+            <button type="submit"> Create </button>
+            
+        </form>
+        
+        <p>Create Appointment</p>
+        
+        <h2>Nurses Status</h2>
+        <table border ="1">    
+            <tr>
+                <th>Username</th>
+                <th>Location</th>
+                <th>Status</th>
+            </tr>
+        </table>
     </body>
 </html>
