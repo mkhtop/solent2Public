@@ -27,8 +27,11 @@
     if (actionStr == null || actionStr.isEmpty()) {
         // do nothing
 
-    } else if ("XXX".equals(actionStr)) {
+    } else if ("createWorker".equals(actionStr)) {
         // put your actions here
+        message = "SUCCESS: new worker worked";
+    } else if ("createAppointment".equals(actionStr)){
+        message = "SUCCESS: new appointment";
     } else {
         errorMessage = "ERROR: page called for unknown action";
     }
@@ -52,16 +55,16 @@
         <p>Getting heartbeat message: <%= serviceFacade.getHeartbeat()%> (note message is auto refreshed every 20 seconds)</p>
         
         <h2>Admin Tools</h2>
-        <form action ="/adminTools.jsp" method="post">
+        <form action="./adminTools.jsp">
             <p> Create Worker</p>
-            <input type="hidden" name="createWorker" value="Create Worker">
             <input type="hidden" name="action" value="createWorker">
             <button type="submit"> Create </button>
-            
         </form>
-        
-        <p>Create Appointment</p>
-        
+        <form>
+            <p>Create Appointment</p>
+            <input type="hidden" name="action" value="createAppointment">
+            <button type="submit"> Create </button>
+        </form>
         <h2>Nurses Status</h2>
         <table border ="1">    
             <tr>
