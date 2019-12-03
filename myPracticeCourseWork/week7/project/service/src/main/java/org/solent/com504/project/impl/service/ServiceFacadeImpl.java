@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.project.model.dao.AppointmentDAO;
 import org.solent.com504.project.model.dao.PersonDAO;
+import org.solent.com504.project.model.dto.Person;
+import org.solent.com504.project.model.dto.Role;
 import org.solent.com504.project.model.service.ServiceFacade;
 
 public class ServiceFacadeImpl implements ServiceFacade {
@@ -38,11 +40,36 @@ public class ServiceFacadeImpl implements ServiceFacade {
     }
     
     @Override
+    public List<Person> getAllPersons(){
+        return personDao.findAll();
+    }
+    
+    @Override
+    public Person addPerson(String fName, String sName, String role, String address){
+        LOG.debug("addPerson called with " + fName + " " + sName + " " + role + " " + address);
+        Person person = new Person();
+        if ("Nurse".equals(role)){
+            person.setRole(Role.NURSE);
+        } else if ("Patient".equals(role)){
+            person.setRole(Role.PATIENT);
+        } else {
+            throw new IllegalArgumentException("role not assigned");
+        }
+        person.setFirstName(fName);
+        person.setSecondName(sName);
+        person.setAddress(address);
+        personDao.save(person);
+        return person;
+    }
+    
+    @Override
     public boolean arrived(String username, String location){
         //person dao, find and change state of person so that main server updates states
         LOG.debug("arrvied called with " + username + " " + location);
         return true;
     };
+    
+    
     
     
 }

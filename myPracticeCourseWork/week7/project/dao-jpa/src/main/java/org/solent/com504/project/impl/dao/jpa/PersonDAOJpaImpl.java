@@ -76,5 +76,11 @@ public class PersonDAOJpaImpl implements PersonDAO {
     public List<Person> findByName(String firstName, String secondName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public Person create(){
+        Person person = new Person();
+        return person;
+    }
 
 }

@@ -10,8 +10,11 @@
     String message = "";
     
     String actionStr = request.getParameter("action");
-    String workerNameStr = request.getParameter("workerName"); 
-    String workerIdStr = request.getParameter("workerId");
+    String workerFNameStr = request.getParameter("workerFName"); 
+    String workerSNameStr = request.getParameter("workerSName");
+    String roleStr = request.getParameter("role");
+    String addressStr = request.getParameter("address");
+    
     
     
     if (actionStr == null || actionStr.isEmpty()) {
@@ -19,7 +22,7 @@
 
     } else if ("addWorker".equals(actionStr)) {
         // put your actcreateWorkerions here
-        message = "SUCCESS: new worker worked with name " + workerNameStr + " " + workerIdStr;
+        message = "SUCCESS: new worker worked with name " + workerFNameStr + " " + workerSNameStr + " " + roleStr + " " + addressStr;
     } else {
         errorMessage = "ERROR: has not worked";
     }
@@ -36,11 +39,14 @@
         <div style="color:red;"><%=errorMessage%></div>
         <div style="color:green;"><%=message%></div>
         
-        <h2>Create New Worker</h2>
+        <h2>Create New Person</h2>
         <form action="./adminTools.jsp" method="post">
             <input type="hidden" name="action" value="addWorker">
-            Enter New Worker Name: <input type="text" name="workerName">
-            Enter New Worker Id: <input type="text" name="workerId">
+            Person First Name: <input type="text" name="workerFName"><br>
+            Person Surname Name: <input type="text" name="workerSName"><br>
+            Role: <input type="radio" name="role" value="Nurse">Nurse
+            <input type="radio" name="role" value="Patient">Patient<br>
+            Address: <input type="text" name="address"><br>
             <button type="sumbit">Create Worker</button>
         </form>
         <form action="./testHeartbeat.jsp">

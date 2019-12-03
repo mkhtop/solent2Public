@@ -1,3 +1,4 @@
+<%@page import="org.solent.com504.project.model.dto.Person"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,7 +58,6 @@
         <h2>Admin Tools</h2>
         <form action="./adminTools.jsp">
             <p> Create Worker</p>
-            <input type="hidden" name="action" value="createWorker">
             <button type="submit"> Create </button>
         </form>
         <form>
@@ -68,10 +68,17 @@
         <h2>Nurses Status</h2>
         <table border ="1">    
             <tr>
-                <th>Username</th>
+                <th>Name</th>
                 <th>Location</th>
                 <th>Status</th>
             </tr>
+            <% for (Person person : serviceFacade.getAllPersons()){ %>
+            <tr>
+                <td<%=person.getFirstName() %></td>
+                <td><%=person.getAddress()%></td>
+                <td>here</td>
+            </tr>
+            <%}%>
         </table>
     </body>
 </html>
