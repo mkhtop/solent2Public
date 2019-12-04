@@ -11,6 +11,8 @@ public interface ServiceFacade {
     
     public Person addPerson(String fName, String sName, String role, String address);
     
+    public boolean changeStatus(String status, long id);
+    
     public boolean deletePerson(long id);
     
     boolean arrived(String username, String location);

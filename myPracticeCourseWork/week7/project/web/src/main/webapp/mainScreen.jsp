@@ -45,6 +45,16 @@
         }
     } else if("arrived".equals(actionStr)){
         message = "SUCCESS: arrived";
+        long personId = Long.parseLong(personIdReq);
+        serviceFacade.changeStatus("arrived", personId);
+    } else if("leaving".equals(actionStr)){
+        message = "SUCCESS: leaving";
+        long personId = Long.parseLong(personIdReq);
+        serviceFacade.changeStatus("leaving", personId);
+    } else if("extend".equals(actionStr)){
+        message = "SUCCESS: extend";
+        long personId = Long.parseLong(personIdReq);
+        serviceFacade.changeStatus("extedned", personId);
     } else {
         errorMessage = "ERROR: page called for unknown action";
     }
@@ -89,7 +99,7 @@
                 <th></th>
             </tr>
             <% for (Person person : serviceFacade.getAllPersons()) {
-                    if (person.getActive() == true) {
+                    if ("active".equals(person.getActive())) {
             %>
             <tr>
                 <td><%=person.getId()%></td>

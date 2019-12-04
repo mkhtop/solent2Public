@@ -44,6 +44,8 @@ public class PersonDAOTest {
             p.setAddress("address_" + i);
             p.setFirstName("firstName_" + i);
             p.setSecondName("secondName_" + i);
+            p.setActive("active");
+            p.setStatus("arrived");
             p.setRole(Role.PATIENT);
             personDao.save(p);
         }
@@ -62,7 +64,10 @@ public class PersonDAOTest {
     public void findByIdTest() {
         LOG.debug("start of findByIdTest()");
         //TODO implement test
-        LOG.debug("NOT IMPLEMENTED");
+        init();
+        Person p = personDao.findById(1L);
+        assertEquals("address_1",p.getAddress());
+        //LOG.debug("NOT IMPLEMENTED");
         LOG.debug("end of findByIdTest()");
     }
 

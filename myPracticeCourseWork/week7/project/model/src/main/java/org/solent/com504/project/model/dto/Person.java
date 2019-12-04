@@ -26,7 +26,7 @@ public class Person {
     
     private String status;
     
-    private Boolean active;
+    private String active;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,11 +78,11 @@ public class Person {
         this.status = status;
     }
     
-    public Boolean getActive(){
+    public String getActive(){
         return active;
     }
     
-    public void setActive(Boolean active){
+    public void setActive(String active){
         this.active = active;
     }
 

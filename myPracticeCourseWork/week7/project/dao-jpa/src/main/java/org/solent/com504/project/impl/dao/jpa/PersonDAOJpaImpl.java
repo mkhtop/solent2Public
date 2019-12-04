@@ -54,7 +54,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
     public void deleteById(long id) {
         entityManager.getTransaction().begin();
         Person person = entityManager.find(Person.class, id);
-        person.setActive(Boolean.FALSE);
+        person.setActive("void");
         entityManager.getTransaction().commit();
     }
 

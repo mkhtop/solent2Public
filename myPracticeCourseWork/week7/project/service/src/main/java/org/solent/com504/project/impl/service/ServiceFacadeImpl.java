@@ -59,9 +59,18 @@ public class ServiceFacadeImpl implements ServiceFacade {
         person.setSecondName(sName);
         person.setAddress(address);
         person.setStatus("NA");
-        person.setActive(true);
+        person.setActive("active");
         personDao.save(person);
         return person;
+    }
+    
+    @Override
+    public boolean changeStatus(String status, long id){
+        LOG.debug("changeStatus called with " + id + " " +status);
+        Person person = personDao.findById(id);
+        person.setStatus(status);
+        personDao.save(person);
+        return true;
     }
     
     @Override
@@ -69,7 +78,7 @@ public class ServiceFacadeImpl implements ServiceFacade {
         LOG.debug("deletePerson called with " + id);
         personDao.deleteById(id);
         return true;
-    };
+    }
     
     @Override
     public boolean arrived(String username, String location){
