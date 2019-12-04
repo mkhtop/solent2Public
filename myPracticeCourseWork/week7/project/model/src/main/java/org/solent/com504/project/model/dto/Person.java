@@ -23,6 +23,10 @@ public class Person {
     private Role role;
 
     private String address;
+    
+    private String status;
+    
+    private Boolean active;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,6 +68,22 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    
+    public String getStatus(){
+        return status;
+    }
+    
+    public void setStatus(String status){
+        this.status = status;
+    }
+    
+    public Boolean getActive(){
+        return active;
+    }
+    
+    public void setActive(Boolean active){
+        this.active = active;
     }
 
     @Override

@@ -3,7 +3,10 @@
     Created on : 20-Nov-2019, 09:44:44
     Author     : markhartop
 --%>
-
+<%@page import="java.util.List"%>
+<%@page import="java.util.Date"%>
+<%@page import="org.solent.com504.project.impl.web.WebObjectFactory"%>
+<%@page import="org.solent.com504.project.model.service.ServiceFacade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String errorMessage = "";
@@ -15,7 +18,7 @@
     String roleStr = request.getParameter("role");
     String addressStr = request.getParameter("address");
     
-    
+    ServiceFacade serviceFacade = (ServiceFacade) WebObjectFactory.getServiceFacade();
     
     if (actionStr == null || actionStr.isEmpty()) {
         // do nothing
@@ -23,6 +26,7 @@
     } else if ("addWorker".equals(actionStr)) {
         // put your actcreateWorkerions here
         message = "SUCCESS: new worker worked with name " + workerFNameStr + " " + workerSNameStr + " " + roleStr + " " + addressStr;
+        serviceFacade.addPerson(workerFNameStr, workerSNameStr, roleStr, addressStr);
     } else {
         errorMessage = "ERROR: has not worked";
     }
@@ -49,7 +53,7 @@
             Address: <input type="text" name="address"><br>
             <button type="sumbit">Create Worker</button>
         </form>
-        <form action="./testHeartbeat.jsp">
+        <form action="./mainScreen.jsp">
             <button type="submit">HOME</button>
         </form>
     </body>

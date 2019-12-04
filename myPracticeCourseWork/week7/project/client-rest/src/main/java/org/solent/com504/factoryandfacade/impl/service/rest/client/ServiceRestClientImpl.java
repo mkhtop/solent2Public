@@ -20,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.filter.LoggingFilter;
+import org.solent.com504.project.model.dto.Person;
 import org.solent.com504.project.model.dto.ReplyMessage;
 import org.solent.com504.project.model.service.ServiceFacade;
 
@@ -55,11 +56,26 @@ public class ServiceRestClientImpl implements ServiceFacade {
         return replyMessage.getDebugMessage();
 
     }
+    
+    @Override
+    public Person addPerson(String fName, String sName, String role, String address){
+    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public boolean arrived(String username, String location) {
         
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Person> getAllPersons() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletePerson(long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

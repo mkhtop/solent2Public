@@ -58,9 +58,18 @@ public class ServiceFacadeImpl implements ServiceFacade {
         person.setFirstName(fName);
         person.setSecondName(sName);
         person.setAddress(address);
+        person.setStatus("NA");
+        person.setActive(true);
         personDao.save(person);
         return person;
     }
+    
+    @Override
+    public boolean deletePerson(long id){
+        LOG.debug("deletePerson called with " + id);
+        personDao.deleteById(id);
+        return true;
+    };
     
     @Override
     public boolean arrived(String username, String location){

@@ -52,7 +52,10 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Override
     public void deleteById(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        Person person = entityManager.find(Person.class, id);
+        person.setActive(Boolean.FALSE);
+        entityManager.getTransaction().commit();
     }
 
     @Override
