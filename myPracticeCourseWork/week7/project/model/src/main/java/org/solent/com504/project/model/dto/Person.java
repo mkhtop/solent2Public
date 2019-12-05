@@ -1,9 +1,11 @@
 package org.solent.com504.project.model.dto;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,6 +29,8 @@ public class Person {
     private String status;
     
     private String active;
+    
+    private Date clockIn;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -84,6 +88,15 @@ public class Person {
     
     public void setActive(String active){
         this.active = active;
+    }
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    public Date getClockIn(){
+        return clockIn;
+    }
+    
+    public void setClockIn(Date clockIn){
+        this.clockIn = clockIn;
     }
 
     @Override

@@ -29,9 +29,6 @@
     if (actionStr == null || actionStr.isEmpty()) {
         // do nothing
 
-    } else if ("createWorker".equals(actionStr)) {
-        // put your actions here
-        message = "SUCCESS: new worker worked";
     } else if ("createAppointment".equals(actionStr)) {
         message = "SUCCESS: new appointment";
     } else if ("deletePerson".equals(actionStr)) {
@@ -44,17 +41,20 @@
             errorMessage = "problem deleting Book " + e.getMessage();
         }
     } else if("arrived".equals(actionStr)){
-        message = "SUCCESS: arrived";
         long personId = Long.parseLong(personIdReq);
-        serviceFacade.changeStatus("arrived", personId);
+        Date clocked = new Date();
+        message = "SUCCESS: arrived " + clocked;
+        serviceFacade.changeStatus("arrived", personId, clocked);
     } else if("leaving".equals(actionStr)){
         message = "SUCCESS: leaving";
         long personId = Long.parseLong(personIdReq);
-        serviceFacade.changeStatus("leaving", personId);
+        Date clocked = new Date();
+        serviceFacade.changeStatus("leaving", personId, clocked);
     } else if("extend".equals(actionStr)){
         message = "SUCCESS: extend";
+        Date clocked = new Date();
         long personId = Long.parseLong(personIdReq);
-        serviceFacade.changeStatus("extedned", personId);
+        serviceFacade.changeStatus("extedned", personId, clocked);
     } else {
         errorMessage = "ERROR: page called for unknown action";
     }
@@ -74,8 +74,6 @@
         <div style="color:green;"><%=message%></div>
 
         <p>The time is: <%= new Date().toString()%> (note page is auto refreshed every 20 seconds)</p>
-
-        <p>Getting heartbeat message: <%= serviceFacade.getHeartbeat()%> (note message is auto refreshed every 20 seconds)</p>
 
         <h2>Admin Tools</h2>
         <form action="./adminTools.jsp">
@@ -97,6 +95,8 @@
                 <th>Status</th>
                 <th></th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
             <% for (Person person : serviceFacade.getAllPersons()) {
                     if ("active".equals(person.getActive())) {
@@ -107,18 +107,20 @@
                 <td><%=person.getAddress()%></td>
                 <td><%=person.getRole()%></td>
                 <td><%=person.getStatus()%></td>
+                <td><%=person.getClockIn()%></td>
+                <td><% Date dif = (new Date() - person.getClockIn()); %></td>
                 <td>
-                    <form action="mainScreen.jsp">
+                    <form action="mainScreen.jsp" method="post">
                         <input type="hidden" name="action" value="arrived">
                         <input type="hidden" name="personId" value="<%=person.getId()%>">
                         <input type="submit" value="Arrived">
                     </form>
-                    <form action="mainScreen.jsp">
+                    <form action="mainScreen.jsp" method="post">
                         <input type="hidden" name="action" value="leaving">
                         <input type="hidden" name="personId" value="<%=person.getId()%>">
                         <input type="submit" value="Leaving">
                     </form>
-                    <form action="mainScreen.jsp">
+                    <form action="mainScreen.jsp" methos="post">
                         <input type="hidden" name="action" value="extend">
                         <input type="hidden" name="personId" value="<%=person.getId()%>">
                         <input type="submit" value="Extend Stay">

@@ -6,6 +6,7 @@
 package org.solent.com504.factoryandfacade.impl.service.rest.client;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -79,8 +80,9 @@ public class ServiceRestClientImpl implements ServiceFacade {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     @Override
-    public boolean changeStatus(String status, long id) {
+    public boolean changeStatus(String status, long id, Date clockIn) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

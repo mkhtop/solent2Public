@@ -65,10 +65,11 @@ public class ServiceFacadeImpl implements ServiceFacade {
     }
     
     @Override
-    public boolean changeStatus(String status, long id){
-        LOG.debug("changeStatus called with " + id + " " +status);
+    public boolean changeStatus(String status, long id, Date clockIn){
+        LOG.debug("changeStatus called with " + id + " " +status + " " + clockIn);
         Person person = personDao.findById(id);
         person.setStatus(status);
+        person.setClockIn(clockIn);
         personDao.save(person);
         return true;
     }

@@ -64,9 +64,15 @@ public class PersonDAOTest {
     public void findByIdTest() {
         LOG.debug("start of findByIdTest()");
         //TODO implement test
-        init();
-        Person p = personDao.findById(1L);
-        assertEquals("address_1",p.getAddress());
+        init();       
+        List<Person> pList = personDao.findByName("firstName_1","secondName_1");
+        assertEquals(1, pList.size());
+        Person p = pList.get(0);
+        long tempId = p.getId();
+        Person findP = personDao.findById(tempId);
+        assertEquals(p.getFirstName(), findP.getFirstName());
+        assertEquals(p.getSecondName(), findP.getSecondName());
+        
         //LOG.debug("NOT IMPLEMENTED");
         LOG.debug("end of findByIdTest()");
     }
