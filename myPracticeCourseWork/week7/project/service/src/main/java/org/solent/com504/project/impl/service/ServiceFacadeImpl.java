@@ -45,6 +45,16 @@ public class ServiceFacadeImpl implements ServiceFacade {
     }
     
     @Override
+    public List<Person> findNurses(){
+        return personDao.findByRole(Role.NURSE);
+    }
+    
+    @Override
+    public List<Person> findPatients(){
+        return personDao.findByRole(Role.PATIENT);
+    };
+    
+    @Override
     public Person addPerson(String fName, String sName, String role, String address){
         LOG.debug("addPerson called with " + fName + " " + sName + " " + role + " " + address);
         Person person = new Person();

@@ -72,7 +72,11 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Override
     public List<Person> findByRole(Role role) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypedQuery<Person> q = entityManager.createQuery("SELECT p FROM Person p WHERE p.role = :role", Person.class);
+        q.setParameter("role", role);
+        List<Person> personList = q.getResultList();
+        return personList;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

@@ -10,6 +10,10 @@ public interface ServiceFacade {
     
     public List<Person> getAllPersons();
     
+    public List<Person> findNurses();
+    
+    public List<Person> findPatients();
+    
     public Person addPerson(String fName, String sName, String role, String address);
     
     public boolean changeStatus(String status, long id, Date clockIn);

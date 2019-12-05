@@ -3,6 +3,7 @@
     Created on : 20-Nov-2019, 09:44:44
     Author     : markhartop
 --%>
+<%@page import="org.solent.com504.project.model.dto.Person"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
 <%@page import="org.solent.com504.project.impl.web.WebObjectFactory"%>
@@ -17,6 +18,8 @@
     String workerSNameStr = request.getParameter("workerSName");
     String roleStr = request.getParameter("role");
     String addressStr = request.getParameter("address");
+    String nurseStr = request.getParameter("nurse");
+    String patientStr = request.getParameter("patient");
     
     ServiceFacade serviceFacade = (ServiceFacade) WebObjectFactory.getServiceFacade();
     
@@ -27,6 +30,8 @@
         // put your actcreateWorkerions here
         message = "SUCCESS: new worker worked with name " + workerFNameStr + " " + workerSNameStr + " " + roleStr + " " + addressStr;
         serviceFacade.addPerson(workerFNameStr, workerSNameStr, roleStr, addressStr);
+    } else if("addAppointment".equals(actionStr)){
+        message = "SUCCESS: Appointment with " + nurseStr + " " + patientStr;
     } else {
         errorMessage = "ERROR: has not worked";
     }
@@ -52,6 +57,21 @@
             <input type="radio" name="role" value="Patient">Patient<br>
             Address: <input type="text" name="address"><br>
             <button type="sumbit">Create Worker</button>
+        </form>
+        <h2>Create New Appointment</h2>
+        <form action="./adminTools.jsp">
+            <input type="hidden" name="action" value="addAppointment">
+            Select Worker:<select name="nurse">
+            <% for (Person person : serviceFacade.findNurses()) { %>
+                <option  value=<%=person.getId()%>><%=person.getFirstName()%></option>
+            <%  }  %>
+            </select><br>
+            Select Patient <select name="patient">
+            <% for (Person person : serviceFacade.findPatients()) {%>
+                <option  value=<%=person.getId()%>><%=person.getFirstName()%></option>
+            <%  }  %>
+            </select><br>
+            <button type="sumbit">Create Appointment</button>
         </form>
         <form action="./mainScreen.jsp">
             <button type="submit">HOME</button>

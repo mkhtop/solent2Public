@@ -80,7 +80,7 @@
             <p> Create Worker</p>
             <button type="submit"> Create </button>
         </form>
-        <form>
+        <form action="./adminTools.jsp">
             <p>Create Appointment</p>
             <input type="hidden" name="action" value="createAppointment">
             <button type="submit"> Create </button>
@@ -96,9 +96,9 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
+                
             </tr>
-            <% for (Person person : serviceFacade.getAllPersons()) {
+            <% for (Person person : serviceFacade.findNurses()) {
                     if ("active".equals(person.getActive())) {
             %>
             <tr>
@@ -108,7 +108,7 @@
                 <td><%=person.getRole()%></td>
                 <td><%=person.getStatus()%></td>
                 <td><%=person.getClockIn()%></td>
-                <td><% Date dif = (new Date() - person.getClockIn()); %></td>
+                
                 <td>
                     <form action="mainScreen.jsp" method="post">
                         <input type="hidden" name="action" value="arrived">
