@@ -1,3 +1,4 @@
+<%@page import="org.solent.com504.project.model.dto.Appointment"%>
 <%@page import="org.solent.com504.project.model.dto.Person"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -139,8 +140,31 @@
                     </form>
                 </td>
             </tr>
+        </table>
+        
+        <h2>Appointments</h2>
+        <table border ="1">
+            <tr>
+                <th>Nurse</th>
+                <th>Patient</th>
+                <th>Location</th>
+                <th>Time</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+            <%} for (Appointment appointment : serviceFacade.findAllAppointments()) {
+                    if ("active".equals(appointment.getActive())) {
+            }%>
+            <tr>
+                <td><%=appointment.getPersonA().getFirstName() %></td>
+                <td><%=appointment.getPersonB().getFirstName() %></td>
+                <td><%=appointment.getPersonB().getAddress()%></td>
+                <td><%=appointment.getHr()%></td>
+                <td><%=appointment.getAppDay()%>/<%=appointment.getMth()%>/<%=appointment.getYr()%></td>
+            </tr>
             <%}
                 }%>
+            </tr>
         </table>
     </body>
 </html>

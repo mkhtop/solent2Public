@@ -54,7 +54,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
     public void deleteById(long id) {
         entityManager.getTransaction().begin();
         Person person = entityManager.find(Person.class, id);
-        person.setActive("void");
+        person.setActive("N");
         entityManager.getTransaction().commit();
     }
 
@@ -89,10 +89,6 @@ public class PersonDAOJpaImpl implements PersonDAO {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public Person create(){
-        Person person = new Person();
-        return person;
-    }
+    
 
 }

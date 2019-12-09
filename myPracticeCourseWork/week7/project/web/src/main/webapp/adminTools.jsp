@@ -20,6 +20,12 @@
     String addressStr = request.getParameter("address");
     String nurseStr = request.getParameter("nurse");
     String patientStr = request.getParameter("patient");
+    String dayInt = request.getParameter("day");
+    String mnthInt = request.getParameter("month");
+    String yearInt = request.getParameter("year");
+    String descStr = request.getParameter("description");
+    String durationInt = request.getParameter("duration");
+    String hrInt = request.getParameter("hr");
     
     ServiceFacade serviceFacade = (ServiceFacade) WebObjectFactory.getServiceFacade();
     
@@ -31,7 +37,17 @@
         message = "SUCCESS: new worker worked with name " + workerFNameStr + " " + workerSNameStr + " " + roleStr + " " + addressStr;
         serviceFacade.addPerson(workerFNameStr, workerSNameStr, roleStr, addressStr);
     } else if("addAppointment".equals(actionStr)){
-        message = "SUCCESS: Appointment with " + nurseStr + " " + patientStr;
+        long nurseId = Long.parseLong(nurseStr);
+        Person nurse = serviceFacade.findById(nurseId);
+        long patientId = Long.parseLong(patientStr);
+        Person patient = serviceFacade.findById(patientId);
+        int hr = Integer.parseInt(hrInt);
+        int day = Integer.parseInt(dayInt);
+        int mnth = Integer.parseInt(mnthInt);
+        int year = Integer.parseInt(yearInt);
+        int duration = Integer.parseInt(durationInt);
+        serviceFacade.addAppointment(nurse, patient, hr, day, mnth, year, descStr, duration);
+        message = "SUCCESS: Appointment with " + nurseStr + " " + patientStr + " " + dayInt + " " + mnthInt + " " + yearInt + " " + descStr + " " + durationInt;
     } else {
         errorMessage = "ERROR: has not worked";
     }
@@ -61,16 +77,42 @@
         <h2>Create New Appointment</h2>
         <form action="./adminTools.jsp">
             <input type="hidden" name="action" value="addAppointment">
-            Select Worker:<select name="nurse">
+            Select Nurse<select name="nurse">
             <% for (Person person : serviceFacade.findNurses()) { %>
                 <option  value=<%=person.getId()%>><%=person.getFirstName()%></option>
             <%  }  %>
             </select><br>
-            Select Patient <select name="patient">
+            Select Patient: <select name="patient">
             <% for (Person person : serviceFacade.findPatients()) {%>
                 <option  value=<%=person.getId()%>><%=person.getFirstName()%></option>
             <%  }  %>
             </select><br>
+            Hour:<select name="hr">
+                <% for (int i=8; i<27; i++){%>
+                <option value=<%=i%>><%=i%></option>;
+                <%}%>  
+            </select>
+            Day:<select name="day">
+                <% for (int i=1; i<32; i++){%>
+                <option value=<%=i%>><%=i%></option>;
+                <%}%>  
+            </select>
+            Month:<select name="month">
+                <% for (int i=1; i<13; i++){%>
+                <option value=<%=i%>><%=i%></option>;
+                <%}%>  
+            </select>
+            Year:<select name="year">
+                <% for (int i=2019; i<2022; i++){%>
+                <option value=<%=i%>><%=i%></option>;
+                <%}%>  
+            </select><br>
+            Duration (minutes):<select name="duration">
+                <% for (int i=15; i<121; i = i+15){%>
+                <option value=<%=i%>><%=i%></option>;
+                <%}%>  
+            </select><br>
+            Description: <input type="text" name="description"><br>
             <button type="sumbit">Create Appointment</button>
         </form>
         <form action="./mainScreen.jsp">

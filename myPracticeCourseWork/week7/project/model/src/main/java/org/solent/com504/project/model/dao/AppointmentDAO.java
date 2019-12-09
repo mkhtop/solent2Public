@@ -22,5 +22,5 @@ public interface AppointmentDAO {
 
     public List<Appointment> findByPersonB(Person personB);
 
-    public List<Appointment> findByDate(Integer year, Integer month, Integer hour, Integer minutes);
+    public List<Appointment> findByDate(Integer day, Integer year, Integer month);
 }

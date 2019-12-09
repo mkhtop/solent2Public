@@ -7,6 +7,7 @@ package org.solent.com504.project.impl.dao.jpa;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.project.model.dao.AppointmentDAO;
@@ -35,12 +36,17 @@ public class AppointmentDAOJpaImpl implements AppointmentDAO {
 
     @Override
     public Appointment save(Appointment appointment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        entityManager.persist(appointment);
+        entityManager.getTransaction().commit();
+        return appointment;
     }
 
     @Override
     public List<Appointment> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypedQuery<Appointment> q = entityManager.createQuery("SELECT a FROM Appointment a", Appointment.class);
+        List<Appointment> appointmentList = q.getResultList();
+        return appointmentList;
     }
 
     @Override
@@ -50,27 +56,42 @@ public class AppointmentDAOJpaImpl implements AppointmentDAO {
 
     @Override
     public void deleteById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        Appointment appointment = entityManager.find(Appointment.class, id);
+        appointment.setActive("N");
+        entityManager.getTransaction().commit();
     }
 
     @Override
     public void deleteAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        entityManager.createQuery("DELETE FROM Appointment ").executeUpdate();
+        entityManager.getTransaction().commit();
     }
 
     @Override
     public List<Appointment> findByPersonA(Person personA) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypedQuery<Appointment> q = entityManager.createQuery("SELECT a FROM Appointment a WHERE a.personA = :person", Appointment.class);
+        q.setParameter("person", personA);
+        List<Appointment> appointmentList = q.getResultList();
+        return appointmentList;
     }
 
     @Override
     public List<Appointment> findByPersonB(Person personB) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypedQuery<Appointment> q = entityManager.createQuery("SELECT a FROM Appointment a WHERE a.personB = :person", Appointment.class);
+        q.setParameter("person", personB);
+        List<Appointment> appointmentList = q.getResultList();
+        return appointmentList;
     }
 
     @Override
-    public List<Appointment> findByDate(Integer year, Integer month, Integer hour, Integer minutes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Appointment> findByDate(Integer day, Integer year, Integer month) {
+        TypedQuery<Appointment> q = entityManager.createQuery("SELECT a FROM Appointment a WHERE a.appDay = :day AND a.mth =:month AND a.yr =:year", Appointment.class);
+        q.setParameter("day", day);
+        q.setParameter("month", month);
+        q.setParameter("year", year);
+        List<Appointment> appointmentList = q.getResultList();
+        return appointmentList;}
 
 }

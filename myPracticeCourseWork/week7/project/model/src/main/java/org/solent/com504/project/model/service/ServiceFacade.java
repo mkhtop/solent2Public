@@ -2,6 +2,7 @@ package org.solent.com504.project.model.service;
 
 import java.util.Date;
 import java.util.List;
+import org.solent.com504.project.model.dto.Appointment;
 import org.solent.com504.project.model.dto.Person;
 
 public interface ServiceFacade {
@@ -14,7 +15,13 @@ public interface ServiceFacade {
     
     public List<Person> findPatients();
     
+    public Person findById(long id);
+    
     public Person addPerson(String fName, String sName, String role, String address);
+    
+    public Appointment addAppointment(Person nurse, Person patient, Integer hr, Integer day, Integer mnth, Integer year, String desc, Integer duration);
+    
+    public List<Appointment> findAllAppointments();
     
     public boolean changeStatus(String status, long id, Date clockIn);
     

@@ -31,14 +31,18 @@ public class Appointment {
     private Person personB;
 
     private Long id;
-
+    
     private Integer hr;
+
+    private Integer day;
 
     private Integer mth;
 
     private Integer yr;
 
     private Integer durationMinutes;
+    
+    private String active;
 
     public Integer getHr() {
         return hr;
@@ -46,6 +50,14 @@ public class Appointment {
 
     public void setHr(Integer hr) {
         this.hr = hr;
+    }
+    
+    public Integer getAppDay() {
+        return day;
+    }
+
+    public void setAppDay(Integer day) {
+        this.day = day;
     }
 
     public Integer getMth() {
@@ -95,10 +107,19 @@ public class Appointment {
     public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
     }
+    
+    public String getActive(){
+        return active;
+    }
+    
+    public void setActive(String active){
+        this.active = active;
+    }
+    
 
     @Override
     public String toString() {
-        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", durationMinutes=" + durationMinutes + '}';
+        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", day=" + day + ", mth=" + mth + ", yr=" + yr + ", durationMinutes=" + durationMinutes + '}';
     }
 
 }

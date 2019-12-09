@@ -22,5 +22,4 @@ public interface PersonDAO {
 
     public List<Person> findByName(String firstName, String secondName);
     
-    public Person create();
 }
