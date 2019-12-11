@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.solent.com504.project.model.dto.Appointment"%>
 <%@page import="org.solent.com504.project.model.dto.Person"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -44,18 +45,27 @@
     } else if("arrived".equals(actionStr)){
         long personId = Long.parseLong(personIdReq);
         Date clocked = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //"2020-12-31 14:59"
+        String dateStr = format.format(clocked);
         message = "SUCCESS: arrived " + clocked;
-        serviceFacade.changeStatus("arrived", personId, clocked);
+        serviceFacade.changeStatus("arrived", personId, dateStr);
     } else if("leaving".equals(actionStr)){
         message = "SUCCESS: leaving";
         long personId = Long.parseLong(personIdReq);
         Date clocked = new Date();
-        serviceFacade.changeStatus("leaving", personId, clocked);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //"2020-12-31 14:59"
+        String dateStr = format.format(clocked);
+        serviceFacade.changeStatus("leaving", personId, dateStr);
     } else if("extend".equals(actionStr)){
         message = "SUCCESS: extend";
         Date clocked = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //"2020-12-31 14:59"
+        String dateStr = format.format(clocked);
         long personId = Long.parseLong(personIdReq);
-        serviceFacade.changeStatus("extedned", personId, clocked);
+        serviceFacade.changeStatus("extedned", personId, dateStr);
     } else {
         errorMessage = "ERROR: page called for unknown action";
     }
@@ -140,7 +150,10 @@
                     </form>
                 </td>
             </tr>
+            <% }
+            }%> 
         </table>
+                       
         
         <h2>Appointments</h2>
         <table border ="1">
@@ -152,9 +165,9 @@
                 <th>Date</th>
             </tr>
             <tr>
-            <%} for (Appointment appointment : serviceFacade.findAllAppointments()) {
+            <%for (Appointment appointment : serviceFacade.findAllAppointments()) {
                     if ("active".equals(appointment.getActive())) {
-            }%>
+            %>
             <tr>
                 <td><%=appointment.getPersonA().getFirstName() %></td>
                 <td><%=appointment.getPersonB().getFirstName() %></td>

@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="org.solent.com504.project.model.dto.Person"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,16 +24,27 @@
 
     // accessing request parameters
     String actionStr = request.getParameter("action");
-    String usernameStr = request.getParameter("username");
-    String locationStr = request.getParameter("location");
+    String idStr = request.getParameter("id");
+    String fNameStr = request.getParameter("fName");
+    String sNameStr = request.getParameter("sName");
+       
 
     // basic error checking before making a call
     if (actionStr == null || actionStr.isEmpty()) {
         // do nothing
-
+        
+    } else if ("search".equals(actionStr)) {
+        // put your actions here
+        Person searchResult = serviceFacade.findByName(fNameStr, sNameStr);
+        String resultName = searchResult.getFirstName();
     } else if ("on".equals(actionStr)) {
         // put your actions here
-        serviceFacade.arrived(usernameStr, locationStr);
+        long personId = Long.parseLong(idStr);
+        Date clocked = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //"2020-12-31 14:59"
+        String dateStr = format.format(clocked);
+        serviceFacade.changeStatus("arrived", personId, dateStr);
     } else if ("leaving".equals(actionStr)){
         //action here
     } else if ("reset".equals(actionStr)) {
@@ -55,10 +68,17 @@
         <div style="color:green;"><%=message%></div>
 
         <p>The time is: <%= new Date().toString()%> (note page is auto refreshed every 20 seconds)</p>
-        <h2>Controls</h2>
-        <form>
-            <p>Username:<input name="username"></p>
-            <p>Location:<input name="location"></p>
+        
+        <h2>Find Nurse:</h2>
+        <form method="post">
+            First Name: <input name="fName">
+            Second Name: <input name="sName">
+            <button type="submit" name="action" value="search">Search</button>
+        </form>
+        
+        Controls
+        <form action="./testClientHeartbeat.jsp" method="post">
+            <p>Id <input name="id"></p>
             <button type="submit" name="action" value="on">On Site</button>
             <button type="submit" name="action" value="leaving">Leaving Site</button>
             <button type="submit" name="action" value="reset">Reset</button>

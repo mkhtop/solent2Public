@@ -47,6 +47,7 @@ public class PersonDAOTest {
             p.setActive("active");
             p.setStatus("arrived");
             p.setRole(Role.PATIENT);
+            p.setClockIn("not available");
             personDao.save(p);
         }
     }

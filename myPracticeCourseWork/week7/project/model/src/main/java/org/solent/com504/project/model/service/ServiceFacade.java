@@ -17,16 +17,18 @@ public interface ServiceFacade {
     
     public Person findById(long id);
     
+    public Person findByName(String fName, String sName);
+    
     public Person addPerson(String fName, String sName, String role, String address);
     
     public Appointment addAppointment(Person nurse, Person patient, Integer hr, Integer day, Integer mnth, Integer year, String desc, Integer duration);
     
     public List<Appointment> findAllAppointments();
     
-    public boolean changeStatus(String status, long id, Date clockIn);
+    public boolean changeStatus(String status, long id, String clockIn);
     
     public boolean deletePerson(long id);
     
-    boolean arrived(String username, String location);
+    
         
 }

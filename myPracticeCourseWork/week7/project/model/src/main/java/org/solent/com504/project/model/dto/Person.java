@@ -30,7 +30,7 @@ public class Person {
     
     private String active;
     
-    private Date clockIn;
+    private String clockIn;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -90,12 +90,12 @@ public class Person {
         this.active = active;
     }
     
-    @Temporal(javax.persistence.TemporalType.DATE)
-    public Date getClockIn(){
+    
+    public String getClockIn(){
         return clockIn;
     }
     
-    public void setClockIn(Date clockIn){
+    public void setClockIn(String clockIn){
         this.clockIn = clockIn;
     }
 

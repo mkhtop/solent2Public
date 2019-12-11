@@ -5,6 +5,7 @@
  */
 package org.solent.com504.factoryandfacade.impl.service.rest.client;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,22 +53,18 @@ public class ServiceRestClientImpl implements ServiceFacade {
 
         ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
         LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
-        
-        if(replyMessage==null) return null;
-        
+
+        if (replyMessage == null) {
+            return null;
+        }
+
         return replyMessage.getDebugMessage();
 
     }
-    
-    @Override
-    public Person addPerson(String fName, String sName, String role, String address){
-    
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
-    public boolean arrived(String username, String location) {
-        
+    public Person addPerson(String fName, String sName, String role, String address) {
+
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -81,10 +78,28 @@ public class ServiceRestClientImpl implements ServiceFacade {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     @Override
-    public boolean changeStatus(String status, long id, Date clockIn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean changeStatus(String status, long id, String clockIn) {
+        LOG.debug("slient changeStatus() Called  with status status " + status + " id " + id + " date " + clockIn);
+        
+        String personId = Long.toString(id);
+
+        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        WebTarget webTarget = client.target(baseUrl).path("changeStatus");
+        
+        MultivaluedMap<String, String> formData = new MultivaluedHashMap<String, String>();
+        formData.add("status", status);
+        formData.add("id", personId);
+        formData.add("date", clockIn);
+
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
+         Response response = invocationBuilder.post(Entity.form(formData));
+
+        ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
+        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
+
+        //if(replyMessage==null) return null;
+        return true;
     }
 
     @Override
@@ -111,7 +126,10 @@ public class ServiceRestClientImpl implements ServiceFacade {
     public List<Appointment> findAllAppointments() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
+    @Override
+    public Person findByName(String fName, String sName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

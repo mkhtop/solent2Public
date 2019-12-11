@@ -61,6 +61,13 @@ public class ServiceFacadeImpl implements ServiceFacade {
     };
     
     @Override
+    public Person findByName(String fName, String sName){
+        List<Person> pList = personDao.findByName(fName, sName);
+        Person p = pList.get(0);
+        return p;
+    }
+    
+    @Override
     public Person addPerson(String fName, String sName, String role, String address){
         LOG.debug("addPerson called with " + fName + " " + sName + " " + role + " " + address);
         Person person = new Person();
@@ -104,9 +111,13 @@ public class ServiceFacadeImpl implements ServiceFacade {
     };
     
     @Override
-    public boolean changeStatus(String status, long id, Date clockIn){
-        LOG.debug("changeStatus called with " + id + " " +status + " " + clockIn);
+    public boolean changeStatus(String status, long id, String clockIn){
+        LOG.debug("changeStatus called with id=" + id + " status=" +status + " time=" + clockIn);
         Person person = personDao.findById(id);
+        if(person==null){
+            LOG.debug("changeStatus called with id=" + id + " not found ");
+            return false;
+        }
         person.setStatus(status);
         person.setClockIn(clockIn);
         personDao.save(person);
@@ -120,12 +131,7 @@ public class ServiceFacadeImpl implements ServiceFacade {
         return true;
     }
     
-    @Override
-    public boolean arrived(String username, String location){
-        //person dao, find and change state of person so that main server updates states
-        LOG.debug("arrvied called with " + username + " " + location);
-        return true;
-    };
+    
     
     
     

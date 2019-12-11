@@ -9,6 +9,8 @@ package org.solent.com504.project.impl.rest;
  *
  * @author gallenc
  */
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -85,22 +87,30 @@ public class RestService {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(replyMessage).build();
         }
     }
-
-    @GET
-    @Path("/arrived")
+  
+    /**
+     *  http://localhost:8084/projectfacadeweb/rest/appointmentService/changeStatus post
+     * @param status
+     * @param id
+     * @param dateStr
+     * @return 
+     */
+    @POST
+    @Path("/changeStatus")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response arrived(@QueryParam("username") String username, @QueryParam("location") String location) {
+    public Response changeStatus(@QueryParam("status") String status, @QueryParam("id") long id, @QueryParam("date") String dateStr) {
         try {
-
+            LOG.debug("server changestatus with status status " + status + " id " + id + " date " + dateStr);
+             
             ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
             ReplyMessage replyMessage = new ReplyMessage();
-            LOG.debug("/arrived called");
+            LOG.debug("/changeStatus called");
 
-            boolean ok = serviceFacade.arrived(username, location);
+            boolean ok = serviceFacade.changeStatus(status, id, dateStr);
             if (ok){
                 replyMessage.setCode(Response.Status.OK.getStatusCode());
             } else {
-                replyMessage.setDebugMessage("problem with arrived info " + username + " " + location);
+                replyMessage.setDebugMessage("problem with arrived info " + id);
             }
             
             return Response.status(Response.Status.OK).entity(replyMessage).build();
