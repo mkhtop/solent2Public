@@ -23,6 +23,7 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.project.impl.web.WebObjectFactory;
+import org.solent.com504.project.model.dto.Person;
 import org.solent.com504.project.model.dto.ReplyMessage;
 import org.solent.com504.project.model.service.ServiceFacade;
 
@@ -84,6 +85,32 @@ public class RestService {
             ReplyMessage replyMessage = new ReplyMessage();
             replyMessage.setCode(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
             replyMessage.setDebugMessage("error calling /getHeartbea " + ex.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(replyMessage).build();
+        }
+    }
+    
+    @GET
+    @Path("/findNurses")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response findNurses() {
+        try {
+
+            ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            ReplyMessage replyMessage = new ReplyMessage();
+            LOG.debug("/findNurses called");
+
+            List<Person> pList = serviceFacade.findNurses();
+            replyMessage.setPersonList(pList);
+            
+            replyMessage.setCode(Response.Status.OK.getStatusCode());
+            
+            return Response.status(Response.Status.OK).entity(replyMessage).build();
+            
+        } catch (Exception ex) {
+            LOG.error("error calling /findNurses ", ex);
+            ReplyMessage replyMessage = new ReplyMessage();
+            replyMessage.setCode(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
+            replyMessage.setDebugMessage("error calling /findNurses " + ex.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(replyMessage).build();
         }
     }

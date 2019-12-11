@@ -87,16 +87,21 @@ public class ServiceRestClientImpl implements ServiceFacade {
         Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
         WebTarget webTarget = client.target(baseUrl).path("changeStatus");
         
-        MultivaluedMap<String, String> formData = new MultivaluedHashMap<String, String>();
+        Person p = new Person();
+        
+        MultivaluedMap<String, String> formData = new MultivaluedHashMap<>();
         formData.add("status", status);
         formData.add("id", personId);
         formData.add("date", clockIn);
+        
+        LOG.debug("map with: " + formData.toString() );
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
-         Response response = invocationBuilder.post(Entity.form(formData));
+        Response response = invocationBuilder.post(Entity.form(formData));
+        
 
         ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
-        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
+        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage.getDebugMessage());
 
         //if(replyMessage==null) return null;
         return true;
@@ -104,7 +109,22 @@ public class ServiceRestClientImpl implements ServiceFacade {
 
     @Override
     public List<Person> findNurses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LOG.debug("findNurses() Called");
+
+        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        WebTarget webTarget = client.target(baseUrl).path("findNurses");
+
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
+        Response response = invocationBuilder.get();
+
+        ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
+        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
+
+        if (replyMessage == null) {
+            return null;
+        }
+
+        return replyMessage.getPersonList();
     }
 
     @Override

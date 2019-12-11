@@ -1,3 +1,7 @@
+
+
+
+
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.solent.com504.project.model.dto.Appointment"%>
 <%@page import="org.solent.com504.project.model.dto.Person"%>
@@ -9,6 +13,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="org.solent.com504.project.impl.web.WebObjectFactory"%>
 <%@page import="org.solent.com504.project.model.service.ServiceFacade"%>
+
 
 
 <%
@@ -26,6 +31,8 @@
     // accessing request parameters
     String actionStr = request.getParameter("action");
     String personIdReq = request.getParameter("personId");
+    
+    
 
     // basic error checking before making a call
     if (actionStr == null || actionStr.isEmpty()) {
@@ -48,15 +55,18 @@
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //"2020-12-31 14:59"
         String dateStr = format.format(clocked);
-        message = "SUCCESS: arrived " + clocked;
+        message = "SUCCESS: arrived " + dateStr;
         serviceFacade.changeStatus("arrived", personId, dateStr);
     } else if("leaving".equals(actionStr)){
-        message = "SUCCESS: leaving";
+        
         long personId = Long.parseLong(personIdReq);
         Date clocked = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //"2020-12-31 14:59"
         String dateStr = format.format(clocked);
+        Date strBack = format.parse(dateStr);
+        long toTime = strBack.getTime();
+        message = "SUCCESS: leaving with date:" + strBack + " secs since 1970" + toTime;
         serviceFacade.changeStatus("leaving", personId, dateStr);
     } else if("extend".equals(actionStr)){
         message = "SUCCESS: extend";
@@ -117,9 +127,21 @@
                 <td><%=person.getFirstName()%></td>
                 <td><%=person.getAddress()%></td>
                 <td><%=person.getRole()%></td>
-                <td><%=person.getStatus()%></td>
+                <%  Date now = new Date();
+                    long nowSecs = now.getTime();
+                    long checkTime = (nowSecs + 1000);
+                    Date clockInDate=new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(person.getClockIn());
+                    long clockTime = clockInDate.getTime();
+                    long result = clockTime-checkTime;
+                    int x = (int) result;
+                    if (x > 0) {
+                %>
+                <td bgcolor="green"><%=person.getStatus()%></td>
+                <% } else {%>
+                <td bgcolor="red"><%=person.getStatus()%></td>
+                }                   <%};%>
                 <td><%=person.getClockIn()%></td>
-                
+
                 <td>
                     <form action="mainScreen.jsp" method="post">
                         <input type="hidden" name="action" value="arrived">

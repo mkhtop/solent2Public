@@ -69,14 +69,34 @@
 
         <p>The time is: <%= new Date().toString()%> (note page is auto refreshed every 20 seconds)</p>
         
+        <h2>Nurses</h2>
+        <table border ="1">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>Status</th>
+            </tr>
+            <% for(Person person : serviceFacade.findNurses()) {
+                    //if ("active".equals(person.getActive())) {
+            %>
+            <tr>
+                <td><%=person.getId()%></td>
+                <td><%=person.getFirstName()%></td>
+                <td><%=person.getSecondName()%></td>
+                <td><%=person.getStatus()%></td>
+            </tr>
+            <%}
+                //}%>
+        </table>
+        
         <h2>Find Nurse:</h2>
         <form method="post">
             First Name: <input name="fName">
             Second Name: <input name="sName">
             <button type="submit" name="action" value="search">Search</button>
         </form>
-        
-        Controls
+   
         <form action="./testClientHeartbeat.jsp" method="post">
             <p>Id <input name="id"></p>
             <button type="submit" name="action" value="on">On Site</button>

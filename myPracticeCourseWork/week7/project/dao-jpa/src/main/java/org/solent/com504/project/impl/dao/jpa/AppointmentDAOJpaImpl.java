@@ -5,6 +5,7 @@
  */
 package org.solent.com504.project.impl.dao.jpa;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -92,6 +93,17 @@ public class AppointmentDAOJpaImpl implements AppointmentDAO {
         q.setParameter("month", month);
         q.setParameter("year", year);
         List<Appointment> appointmentList = q.getResultList();
-        return appointmentList;}
+        return appointmentList;
+    }
+    
+    /*@Override
+    public List<Appointment> findBetweenDates(Date startDate, Date endDate) {
+        TypedQuery<Appointment> q = entityManager.createQuery("SELECT a FROM Appointment a WHERE a.startDate BETWEEN :startDate AND :endDate", Appointment.class);
+        q.setParameter("startDate", startDate);
+        q.setParameter("endDate", endDate);
+        List<Appointment> appointmentList = q.getResultList();
+        return appointmentList;
+
+    }*/
 
 }

@@ -46,6 +46,8 @@ public class ReplyMessage {
     public List<String> getStringList() {
         return stringList;
     }
+    
+    
 
     public void setStringList(List<String> stringList) {
         this.stringList = stringList;
