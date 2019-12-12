@@ -35,6 +35,27 @@ public class ServiceFacadeJpaTest {
         serviceFacade = serviceObjectFactory.getServiceFacade();
 
     }
+    
+    private void init() {
+        // delete all in database
+        
+        serviceFacade.deleteAll();
+        // add 5 patients
+        for (int i = 1; i < 4; i++) {
+            String address = ("address_" + i);
+            String fName = ("firstName_" + i);
+            String sName = ("secondName_" + i);
+            String role = "Nurse";
+            serviceFacade.addPerson(fName, sName, role, address);   
+        }
+        for (int i = 4; i < 6; i++) {
+            String address = ("address_" + i);
+            String fName = ("firstName_" + i);
+            String sName = ("secondName_" + i);
+            String role = "Patient";
+            serviceFacade.addPerson(fName, sName, role, address);   
+        }
+    }
 
     @Test
     public void testFactory() {
@@ -73,13 +94,12 @@ public class ServiceFacadeJpaTest {
     
     @Test
     public void testGetAllPersons(){
-        Person p = new Person();
-        serviceFacade.addPerson("m", "m", "Nurse", "m");
+        init();
         System.out.println("start ServiceFacadeTest testGetAllPerson()");
         List<Person> pList = serviceFacade.getAllPersons();
         assertNotNull(pList);
         LOG.debug("plist size " + pList.size());
-        assertEquals(1, pList.size());
+        assertEquals(5, pList.size());
     }
     
 }

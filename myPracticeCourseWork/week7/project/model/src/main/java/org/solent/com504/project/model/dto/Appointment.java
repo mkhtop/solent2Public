@@ -115,11 +115,13 @@ public class Appointment {
     public void setActive(String active){
         this.active = active;
     }
-    
 
     @Override
     public String toString() {
-        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", day=" + day + ", mth=" + mth + ", yr=" + yr + ", durationMinutes=" + durationMinutes + '}';
+        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", day=" + day + ", mth=" + mth + ", yr=" + yr + ", durationMinutes=" + durationMinutes + ", active=" + active + '}';
     }
+    
+
+    
 
 }

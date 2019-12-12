@@ -128,6 +128,12 @@ public class ServiceFacadeImpl implements ServiceFacade {
         }
     }
     
+    @Override
+    public boolean deleteAll(){
+        LOG.debug("deleteAll called");
+        personDao.deleteAll();
+        return true;
+    }
         
     @Override
     public boolean deletePerson(long id){

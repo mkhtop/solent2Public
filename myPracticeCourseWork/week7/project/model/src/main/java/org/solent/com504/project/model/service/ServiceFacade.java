@@ -29,6 +29,8 @@ public interface ServiceFacade {
        
     public boolean deletePerson(long id);
     
+    public boolean deleteAll();
+    
     
         
 }
