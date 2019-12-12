@@ -82,7 +82,32 @@ public class PersonDAOTest {
     public void saveTest() {
         LOG.debug("start of saveTest()");
         //TODO implement test
-        LOG.debug("NOT IMPLEMENTED");
+        assertNotNull(personDao);
+        init(); // initialise database
+
+        List<Person> persons = personDao.findAll();
+        assertFalse(persons.isEmpty());
+
+        // get person in middle of index
+        int index = persons.size() / 2;
+        Person p = persons.get(index);
+        LOG.debug("initial person index:" + index + " " + p);
+
+        // change values
+        p.setAddress("new address");
+        p.setFirstName("new name");
+        LOG.debug("new person details " + p);
+
+        // save animal
+        personDao.save(p);
+        Long id = p.getId();
+
+        // retrieve another copy of the animal
+        Person newPerson = personDao.findById(id);
+        LOG.debug("retrieved  details " + newPerson);
+        // quick and dirty equals
+        assertTrue(p.toString().equals(newPerson.toString()));
+        
         LOG.debug("end of saveTest()");
     }
 

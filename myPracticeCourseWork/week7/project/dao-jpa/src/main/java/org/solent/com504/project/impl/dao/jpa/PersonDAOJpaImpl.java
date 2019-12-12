@@ -60,7 +60,12 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Override
     public Person delete(Person person) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        Person person1 = entityManager.find(Person.class, person);
+        TypedQuery<Person> q = entityManager.createQuery("DELETE FROM Person p WHERE p = :person1",Person.class);
+        q.setParameter("person", person1);
+        entityManager.getTransaction().commit();
+        return person1;
     }
 
     @Override
