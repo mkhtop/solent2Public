@@ -13,6 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.factoryandfacade.impl.service.rest.client.ClientObjectFactoryImpl;
+import org.solent.com504.project.model.dto.Person;
 import org.solent.com504.project.model.service.ServiceFacade;
 import org.solent.com504.project.model.service.ServiceObjectFactory;
 
@@ -45,6 +46,26 @@ public class RestClientServiceFacadeTest {
         LOG.debug("heartbeat received :" + heartbeat);
 
         LOG.debug("end of testGetHeartbeat()");
+    }
+
+    @Test
+    public void testChangeStatus() {
+        LOG.debug("start of testChangeStatus()");
+
+        List<Person> pList = serviceFacade.findNurses();
+        Person p = pList.get(0);
+        long id = p.getId();
+        LOG.debug("changing status of person " + p);
+        serviceFacade.changeStatus("arrived", id, "2020-12-31 14:59");
+
+        pList = serviceFacade.findNurses();
+        p = pList.get(0);
+        id = p.getId();
+        LOG.debug("changed status of person " + p);
+
+        assertEquals("arrived", p.getStatus());
+
+        LOG.debug("end of testChangeStatus()");
     }
 
 }

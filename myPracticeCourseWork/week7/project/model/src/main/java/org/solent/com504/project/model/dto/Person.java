@@ -101,9 +101,10 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", role=" + role + ", address=" + address + '}';
+        return "Person{" + "id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", role=" + role + ", address=" + address + ", status=" + status + ", active=" + active + ", clockIn=" + clockIn + '}';
     }
-    
+
+ 
     
     
     

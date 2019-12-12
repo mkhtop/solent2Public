@@ -26,7 +26,7 @@ public interface ServiceFacade {
     public List<Appointment> findAllAppointments();
     
     public boolean changeStatus(String status, long id, String clockIn);
-    
+       
     public boolean deletePerson(long id);
     
     

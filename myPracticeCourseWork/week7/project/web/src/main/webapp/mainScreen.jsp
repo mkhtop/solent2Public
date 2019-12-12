@@ -65,8 +65,7 @@
         //"2020-12-31 14:59"
         String dateStr = format.format(clocked);
         Date strBack = format.parse(dateStr);
-        long toTime = strBack.getTime();
-        message = "SUCCESS: leaving with date:" + strBack + " secs since 1970" + toTime;
+        message = "SUCCESS: leaving with date:" + strBack;
         serviceFacade.changeStatus("leaving", personId, dateStr);
     } else if("extend".equals(actionStr)){
         message = "SUCCESS: extend";
@@ -127,19 +126,7 @@
                 <td><%=person.getFirstName()%></td>
                 <td><%=person.getAddress()%></td>
                 <td><%=person.getRole()%></td>
-                <%  Date now = new Date();
-                    long nowSecs = now.getTime();
-                    long checkTime = (nowSecs + 1000);
-                    Date clockInDate=new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(person.getClockIn());
-                    long clockTime = clockInDate.getTime();
-                    long result = clockTime-checkTime;
-                    int x = (int) result;
-                    if (x > 0) {
-                %>
-                <td bgcolor="green"><%=person.getStatus()%></td>
-                <% } else {%>
-                <td bgcolor="red"><%=person.getStatus()%></td>
-                }                   <%};%>
+                <td><%=person.getStatus()%></td>        
                 <td><%=person.getClockIn()%></td>
 
                 <td>
