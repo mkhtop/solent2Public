@@ -12,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.project.impl.dao.jpa.DAOFactoryJPAImpl;
-import static org.solent.com504.project.impl.dao.jpa.test.PersonDAOTest.LOG;
+import static org.solent.com504.project.impl.dao.jpa.test.AppointmentDAOTest.LOG;
 import org.solent.com504.project.model.dao.AppointmentDAO;
 import org.solent.com504.project.model.dao.PersonDAO;
 import org.solent.com504.project.model.dto.Appointment;

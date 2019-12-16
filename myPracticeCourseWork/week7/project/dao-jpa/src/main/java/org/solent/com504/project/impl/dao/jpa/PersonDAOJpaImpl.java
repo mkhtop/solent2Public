@@ -58,20 +58,20 @@ public class PersonDAOJpaImpl implements PersonDAO {
         entityManager.getTransaction().commit();
     }
 
-    @Override
+   /* @Override
     public Person delete(Person person) {
         entityManager.getTransaction().begin();
         Person person1 = entityManager.find(Person.class, person);
         TypedQuery<Person> q = entityManager.createQuery("DELETE FROM Person p WHERE p = :person1",Person.class);
-        q.setParameter("person", person1);
+        q.setParameter("person1", person1);
         entityManager.getTransaction().commit();
         return person1;
-    }
+    }*/
 
     @Override
     public void deleteAll() {
         entityManager.getTransaction().begin();
-        entityManager.createQuery("DELETE FROM Person ").executeUpdate();
+        entityManager.createQuery("DELETE FROM Person").executeUpdate();
         entityManager.getTransaction().commit();
     }
 
@@ -92,6 +92,11 @@ public class PersonDAOJpaImpl implements PersonDAO {
         List<Person> personList = q.getResultList();
         return personList;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person delete(Person person) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
