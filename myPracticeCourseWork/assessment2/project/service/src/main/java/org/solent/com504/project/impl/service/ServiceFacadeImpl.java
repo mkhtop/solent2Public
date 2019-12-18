@@ -64,10 +64,9 @@ public class ServiceFacadeImpl implements ServiceFacade {
     };
     
     @Override
-    public Person findByName(String fName, String sName){
+    public List<Person> findByName(String fName, String sName){
         List<Person> pList = personDao.findByName(fName, sName);
-        Person p = pList.get(0);
-        return p;
+        return pList;
     }
     
     @Override
@@ -86,6 +85,12 @@ public class ServiceFacadeImpl implements ServiceFacade {
         person.setAddress(address);
         person.setStatus("NA");
         person.setActive("active");
+        Date clocked = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //"2020-12-31 14:59"
+        Date clockIn = new Date();
+        String dateStr = format.format(clocked);
+        person.setClockIn(dateStr);
         personDao.save(person);
         return person;
     }
@@ -139,14 +144,19 @@ public class ServiceFacadeImpl implements ServiceFacade {
         return true;
     }
     
-    public boolean checkIfLate(Date currentTime, Date checkTime){
-        LOG.debug("checkIfLate called with " + currentTime + " " + checkTime);
+    @Override
+    public List<String> checkIfLate(Date currentTime, Date checkTime){
+        LOG.debug("service checkIfLate called with " + currentTime + " " + checkTime);
         long currentT = currentTime.getTime();
-        long checkT = checkTime.getTime() + 3000;
-        if (checkT < currentT){
-            return true;
-        } else{
-            return false;
+        long checkT = checkTime.getTime();
+        checkT = checkT + 60000;
+        List<String> sList = new ArrayList<>();
+        if (checkT < currentT) {
+            sList.add("late");
+            return sList;
+        } else {
+            sList.add("onTime");
+            return sList;
         }
     }
     

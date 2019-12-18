@@ -17,7 +17,7 @@ public interface ServiceFacade {
     
     public Person findById(long id);
     
-    public Person findByName(String fName, String sName);
+    public List<Person> findByName(String fName, String sName);
     
     public Person addPerson(String fName, String sName, String role, String address);
     
@@ -31,6 +31,6 @@ public interface ServiceFacade {
     
     public boolean deleteAll();
     
-    public boolean checkIfLate(Date currentTime, Date checkTime);
+    public List<String> checkIfLate(Date currentTime, Date checkTime);
         
 }

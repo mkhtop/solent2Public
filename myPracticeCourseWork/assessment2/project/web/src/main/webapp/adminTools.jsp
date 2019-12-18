@@ -12,9 +12,9 @@
 <%
     String errorMessage = "";
     String message = "";
-    
+
     String actionStr = request.getParameter("action");
-    String workerFNameStr = request.getParameter("workerFName"); 
+    String workerFNameStr = request.getParameter("workerFName");
     String workerSNameStr = request.getParameter("workerSName");
     String roleStr = request.getParameter("role");
     String addressStr = request.getParameter("address");
@@ -27,29 +27,43 @@
     String durationInt = request.getParameter("duration");
     String hrStr = request.getParameter("hr");
     String minStr = request.getParameter("mins");
-    
+
     String appDate = yearStr + "-" + mnthStr + "-" + dayStr + " " + hrStr + ":" + minStr;
-    
+
     ServiceFacade serviceFacade = (ServiceFacade) WebObjectFactory.getServiceFacade();
-    
+
     if (actionStr == null || actionStr.isEmpty()) {
-        // do nothing
-    } else if ("addWorker".equals(actionStr)) {
-        // put your actcreateWorkerions here
-        message = "SUCCESS: new worker worked with name " + workerFNameStr + " " + workerSNameStr + " " + roleStr + " " + addressStr;
-        serviceFacade.addPerson(workerFNameStr, workerSNameStr, roleStr, addressStr);
-    } else if("addAppointment".equals(actionStr)){
-        long nurseId = Long.parseLong(nurseStr);
-        Person nurse = serviceFacade.findById(nurseId);
-        long patientId = Long.parseLong(patientStr);
-        Person patient = serviceFacade.findById(patientId);
-        int duration = Integer.parseInt(durationInt);
-        serviceFacade.addAppointment(nurse, patient, appDate, descStr, duration);
-        message = "SUCCESS: Appointment with " + nurseStr + " " + patientStr + " " + appDate + " " + descStr + " " + durationInt;
-    } else {
-        errorMessage = "ERROR: has not worked";
-    }
-    
+            // do nothing
+        } else if ("addWorker".equals(actionStr)) {
+            // put your actcreateWorkerions here
+            if (workerFNameStr == null || workerFNameStr.isEmpty()) {
+                errorMessage = "Please enter all worker details";
+            } else if (workerSNameStr == null || workerSNameStr.isEmpty()) {
+                errorMessage = "Please enter all worker details";
+            }else if (roleStr == null || roleStr.isEmpty()){
+                errorMessage = "Please enter all worker details";
+            }else if (addressStr == null || addressStr.isEmpty()){
+                errorMessage = "Please enter all worker details";
+            } else {
+                message = "SUCCESS: new worker worked with name " + workerFNameStr + " " + workerSNameStr + " " + roleStr + " " + addressStr;
+                serviceFacade.addPerson(workerFNameStr, workerSNameStr, roleStr, addressStr);
+            }
+        } else if ("addAppointment".equals(actionStr)) {
+            if (descStr.isEmpty() || descStr == null) {
+                errorMessage = "Please enter all appointment details";
+            } else {
+                long nurseId = Long.parseLong(nurseStr);
+                Person nurse = serviceFacade.findById(nurseId);
+                long patientId = Long.parseLong(patientStr);
+                Person patient = serviceFacade.findById(patientId);
+                int duration = Integer.parseInt(durationInt);
+                serviceFacade.addAppointment(nurse, patient, appDate, descStr, duration);
+                message = "SUCCESS: Appointment with " + nurseStr + " " + patientStr + " " + appDate + " " + descStr + " " + durationInt;
+            }
+        } else {
+            errorMessage = "ERROR: has not worked";
+        }
+
 %>
 <!DOCTYPE html>
 <html>
@@ -58,10 +72,10 @@
         <title>Admin Tools</title>
     </head>
     <body>
-        
+
         <div style="color:red;"><%=errorMessage%></div>
         <div style="color:green;"><%=message%></div>
-        
+
         <h2>Create New Person</h2>
         <form action="./adminTools.jsp" method="post">
             <input type="hidden" name="action" value="addWorker">
@@ -72,18 +86,21 @@
             Address: <input type="text" name="address"><br>
             <button type="sumbit">Create Worker</button>
         </form>
+        <% if (serviceFacade.findNurses().isEmpty()){
+        }else if(serviceFacade.findPatients().isEmpty()){
+        }else {%>
         <h2>Create New Appointment</h2>
         <form action="./adminTools.jsp">
             <input type="hidden" name="action" value="addAppointment">
             Select Nurse<select name="nurse">
-            <% for (Person person : serviceFacade.findNurses()) { %>
+                <% for (Person person : serviceFacade.findNurses()) {%>
                 <option  value=<%=person.getId()%>><%=person.getFirstName()%></option>
-            <%  }  %>
+                <%  }  %>
             </select><br>
             Select Patient: <select name="patient">
-            <% for (Person person : serviceFacade.findPatients()) {%>
+                <% for (Person person : serviceFacade.findPatients()) {%>
                 <option  value=<%=person.getId()%>><%=person.getFirstName()%></option>
-            <%  }  %>
+                <%  }  %>
             </select><br>
             Hour:<select name="hr">
                 <% for (int i = 8; i < 18; i++) {%>
@@ -91,36 +108,38 @@
                 <% }%>  
             </select>
             Minutes:<select name="mins">
-                <% for (int i = 0; i < 46; i=i+15) {
-                    if (i==0){%>
+                <% for (int i = 0; i < 46; i = i + 15) {
+                        if (i == 0) {%>
                 <option value=<%=i%>><%=i%><%=i%></option>;
                 <%} else {%>
                 <option value=<%=i%>><%=i%></option>;
-                <%} }%>  
+                <%}
+                    }%>  
             </select><br>
             Day:<select name="day">
-                <% for (int i=1; i<32; i++){%>
+                <% for (int i = 1; i < 32; i++) {%>
                 <option value=<%=i%>><%=i%></option>;
                 <%}%>  
             </select>
             Month:<select name="month">
-                <% for (int i=1; i<13; i++){%>
+                <% for (int i = 1; i < 13; i++) {%>
                 <option value=<%=i%>><%=i%></option>;
                 <%}%>  
             </select>
             Year:<select name="year">
-                <% for (int i=2019; i<2022; i++){%>
+                <% for (int i = 2019; i < 2022; i++) {%>
                 <option value=<%=i%>><%=i%></option>;
                 <%}%>  
             </select><br>
             Duration (minutes):<select name="duration">
-                <% for (int i=15; i<121; i = i+15){%>
+                <% for (int i = 15; i < 121; i = i + 15) {%>
                 <option value=<%=i%>><%=i%></option>;
                 <%}%>  
             </select><br>
             Description: <input type="text" name="description"><br>
             <button type="sumbit">Create Appointment</button>
-        </form>
+        </form><br>
+        <% } %>
         <form action="./mainScreen.jsp">
             <button type="submit">HOME</button>
         </form>

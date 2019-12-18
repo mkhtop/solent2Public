@@ -24,13 +24,9 @@
     // accessing request parameters
     String actionStr = request.getParameter("action");
     String personIdReq = request.getParameter("personId");
-    
-    
+
     // basic error checking before making a call
     if (actionStr == null || actionStr.isEmpty()) {
-        // do nothing
-    } else if ("createAppointment".equals(actionStr)) {
-        message = "SUCCESS: new appointment";
     } else if ("deletePerson".equals(actionStr)) {
         try {
             long personId = Long.parseLong(personIdReq);
@@ -38,9 +34,9 @@
                 message = "SUCCESS: person deleted";
             };
         } catch (Exception e) {
-            errorMessage = "problem deleting Book " + e.getMessage();
+            errorMessage = "problem deleting person " + e.getMessage();
         }
-    } else if("arrived".equals(actionStr)){
+    } else if ("arrived".equals(actionStr)) {
         long personId = Long.parseLong(personIdReq);
         Date clocked = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -48,24 +44,22 @@
         String dateStr = format.format(clocked);
         message = "SUCCESS: arrived " + dateStr;
         serviceFacade.changeStatus("arrived", personId, dateStr);
-    } else if("leaving".equals(actionStr)){
-        
+    } else if ("leaving".equals(actionStr)) {
         long personId = Long.parseLong(personIdReq);
         Date clocked = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //"2020-12-31 14:59"
         String dateStr = format.format(clocked);
-        Date strBack = format.parse(dateStr);
-        message = "SUCCESS: leaving with date:" + strBack;
+        message = "SUCCESS: leaving " + dateStr;
         serviceFacade.changeStatus("leaving", personId, dateStr);
-    } else if("extend".equals(actionStr)){
-        message = "SUCCESS: extend";
+    } else if ("extend".equals(actionStr)) {
+        long personId = Long.parseLong(personIdReq);
         Date clocked = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //"2020-12-31 14:59"
         String dateStr = format.format(clocked);
-        long personId = Long.parseLong(personIdReq);
-        serviceFacade.changeStatus("extedned", personId, dateStr);
+        message = "SUCCESS: extended " + dateStr;
+        serviceFacade.changeStatus("extended", personId, dateStr);
     } else {
         errorMessage = "ERROR: page called for unknown action";
     }
@@ -87,7 +81,7 @@
 
         <h2>Admin Tools</h2>
         <form action="./adminTools.jsp">
-            <p> Create Worker</p>
+            <p> Create Nurse/Patient</p>
             <button type="submit"> Create </button>
         </form>
         <form action="./adminTools.jsp">
@@ -95,33 +89,43 @@
             <input type="hidden" name="action" value="createAppointment">
             <button type="submit"> Create </button>
         </form>
-        <% if (serviceFacade.findNurses().isEmpty()){}
-            else {%>
+        <% if (serviceFacade.findNurses().isEmpty()) {
+            } else {%>
         <h2>Nurses Status</h2>
         <table border ="1">    
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Location</th>
-                <th>Role</th>
                 <th>Status</th>
                 <th></th>
                 <th></th>
                 <th></th>
-                
+
             </tr>
-            <% 
+            <%
                 for (Person person : serviceFacade.findNurses()) {
                     if ("active".equals(person.getActive())) {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                        //"2020-12-31 14:59"
+                        Date currentT = new Date();
             %>
             <tr>
-                <td><%=person.getId()%></td>
-                <td><%=person.getFirstName()%></td>
+                
+                <td><%=person.getFirstName()%> <%=person.getSecondName()%></td>
                 <td><%=person.getAddress()%></td>
-                <td><%=person.getRole()%></td>
-                <td><%=person.getStatus()%></td>        
-                <td><%=person.getClockIn()%></td>
+                <td><%=person.getStatus()%></td>
+                <%
+                    if (person.getClockIn().equals("NA")) {
 
+                    } else {
+                        Date checkTime = format.parse(person.getClockIn());
+                        List <String> sList = serviceFacade.checkIfLate(currentT, checkTime);
+                        String late = sList.get(0);
+        if (late.equals("late")) {%>
+                <td bgcolor="red"><%=person.getClockIn()%></td>
+                <% } else {%>
+                <td><%=person.getClockIn()%></td><%}%>
+                <%}%>
                 <td>
                     <form action="mainScreen.jsp" method="post">
                         <input type="hidden" name="action" value="arrived">
@@ -133,10 +137,10 @@
                         <input type="hidden" name="personId" value="<%=person.getId()%>">
                         <input type="submit" value="Leaving">
                     </form>
-                    <form action="mainScreen.jsp" methos="post">
+                    <form action="mainScreen.jsp" method="post">
                         <input type="hidden" name="action" value="extend">
                         <input type="hidden" name="personId" value="<%=person.getId()%>">
-                        <input type="submit" value="Extend Stay">
+                        <input type="submit" value="Okay">
                     </form>
                 </td>
                 <td>
@@ -157,10 +161,10 @@
             %> 
         </table>
         <% } %>
-                       
-        <% if (serviceFacade.findAllAppointments().isEmpty()){
-            
-        }else {%>
+
+        <% if (serviceFacade.findAllAppointments().isEmpty()) {
+
+            } else {%>
         <h2>Appointments</h2>
         <table border ="1">
             <tr>
@@ -170,22 +174,23 @@
                 <th>Time and Date</th>
             </tr>
             <tr>
-            <%for (Appointment appointment : serviceFacade.findAllAppointments()) {
-                    if ("active".equals(appointment.getActive())) {
-                        SimpleDateFormat format = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-                        //"2020-12-31 14:59"
-                        String dateStr = format.format(appointment.getAppDate());
-            %>
+                <%for (Appointment appointment : serviceFacade.findAllAppointments()) {
+                        if ("active".equals(appointment.getActive())) {
+                            SimpleDateFormat format = new SimpleDateFormat("HH:mm dd-MM-yyyy");
+                            //"2020-12-31 14:59"
+                            String dateStr = format.format(appointment.getAppDate());
+                %>
             <tr>
-                <td><%=appointment.getPersonA().getFirstName() %></td>
-                <td><%=appointment.getPersonB().getFirstName() %></td>
+                <td><%=appointment.getPersonA().getFirstName()%></td>
+                <td><%=appointment.getPersonB().getFirstName()%></td>
                 <td><%=appointment.getPersonB().getAddress()%></td>
                 <td><%=dateStr%></td>
+
             </tr>
             <%}
                 }%>
-            </tr>
-        </table>
-            <% }%>
-    </body>
+        </tr>
+    </table>
+    <% }%>
+</body>
 </html>

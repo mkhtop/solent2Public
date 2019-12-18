@@ -5,7 +5,9 @@
  */
 package org.solent.com504.factoryandfacade.impl.service.rest.client;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -94,8 +96,27 @@ public class ServiceRestClientImpl implements ServiceFacade {
     }
 
     @Override
-    public Person findByName(String fName, String sName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Person> findByName(String fName, String sName) {
+        LOG.debug("client findByName Called fName=" + fName + " sName=" + sName);
+        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        WebTarget webTarget = client.target(baseUrl).path("findByName").queryParam("fName", fName).queryParam("sName", sName);
+        
+        // this is how we construct html FORM variables
+        //MultivaluedMap<String, String> formData = new MultivaluedHashMap<String, String>();
+        //formData.add("status", status);
+        //formData.add("id", idStr);
+        //formData.add("clockIn", clockIn);
+
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
+        Response response = invocationBuilder.get();
+
+        ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
+        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
+        if (replyMessage == null) {
+            return null;
+        }
+
+        return replyMessage.getPersonList();
     }
 
     @Override
@@ -142,6 +163,23 @@ public class ServiceRestClientImpl implements ServiceFacade {
     @Override
     public boolean deleteAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<String> checkIfLate(Date currentTime, Date checkTime) {
+        LOG.debug("client checkIfLate Called currentTime=" + currentTime + " checkTime=" + checkTime);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String currentStr = format.format(currentTime);
+        String checkStr = format.format(checkTime);
+        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        WebTarget webTarget = client.target(baseUrl).path("checkIfLate").queryParam("currentTime", currentStr).queryParam("checkTime", checkStr);
+        
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
+        Response response = invocationBuilder.get();
+
+        ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
+        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
+        return replyMessage.getStringList();
     }
 
 
