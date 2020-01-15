@@ -98,11 +98,11 @@ public class PersonDAOTest {
         p.setFirstName("new name");
         LOG.debug("new person details " + p);
 
-        // save animal
+        // save person
         personDao.save(p);
         Long id = p.getId();
 
-        // retrieve another copy of the animal
+        // retrieve another copy
         Person newPerson = personDao.findById(id);
         LOG.debug("retrieved  details " + newPerson);
         // quick and dirty equals
